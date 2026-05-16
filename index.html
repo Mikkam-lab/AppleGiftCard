@@ -161,6 +161,63 @@
     }
     .warning.danger { background: #fff1f1; border-color: #ffd1d4; color: #7f1d20; }
 
+    .region-hero {
+      background: linear-gradient(145deg, #ffffff 0%, #eaf3ff 100%);
+      border: 1px solid #cfe2ff;
+    }
+    .region-title-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .region-flag {
+      width: 48px;
+      height: 48px;
+      border-radius: 17px;
+      display: grid;
+      place-items: center;
+      background: #fff;
+      box-shadow: 0 8px 18px rgba(22,119,255,.12);
+      font-size: 27px;
+      flex: 0 0 auto;
+    }
+    .match-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: #e9fbf3;
+      color: #117848;
+      border: 1px solid #bcebd5;
+      font-size: 13px;
+      font-weight: 900;
+    }
+    .examples {
+      display: grid;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .example-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 11px 12px;
+      border-radius: 15px;
+      background: #f8fbff;
+      border: 1px solid var(--line);
+      font-weight: 800;
+      font-size: 14px;
+    }
+    .example-row.featured {
+      background: var(--blue-soft);
+      border-color: #b9d8ff;
+      color: var(--blue-dark);
+    }
+
     .checklist { display: grid; gap: 10px; margin-top: 14px; }
     .check-item {
       display: flex;
@@ -317,13 +374,51 @@
   <main class="app">
     <header class="hero" id="top">
       <div class="badge">📱 Подходит для iPhone и iPad</div>
-      <h1>Инструкция по смене региона App Store и активации Apple Gift Card</h1>
-      <p class="subtitle">Следуйте шагам ниже, чтобы подготовить Apple ID, сменить регион и активировать карту пополнения без ошибок.</p>
+      <h1>Apple Gift Card Вьетнам: инструкция по смене региона и активации</h1>
+      <p class="subtitle">Пошагово покажем, как подготовить Apple ID, сменить регион на Vietnam / Вьетнам и активировать карту пополнения.</p>
       <div class="actions">
-        <button class="primary" data-scroll="#before">Начать инструкцию</button>
-        <a class="button secondary support-link" href="https://t.me/mikkar" target="_blank" rel="noopener">Написать в поддержку</a>
+        <button class="primary" data-scroll="#vietnam-start">Начать активацию Вьетнам</button>
+        <a class="button secondary support-link" href="https://t.me/mikkar" target="_blank" rel="noopener">Написать в Telegram</a>
       </div>
     </header>
+
+    <section class="card region-hero" id="vietnam-start">
+      <div class="region-title-row">
+        <div class="region-flag">🇻🇳</div>
+        <div>
+          <h2 class="section-title">Основной регион для активации: Вьетнам</h2>
+          <p class="section-text">Мы продаём Apple Gift Card для региона Вьетнам. Поэтому в инструкции ниже основной сценарий — смена региона Apple ID на Vietnam / Вьетнам и последующая активация карты.</p>
+          <div class="match-pill">Важно: регион Apple ID должен совпадать с регионом карты.</div>
+        </div>
+      </div>
+      <button class="primary" data-scroll="#before">Я активирую карту Вьетнам</button>
+    </section>
+
+    <section class="card" id="universal">
+      <h2 class="section-title">Инструкция универсальная</h2>
+      <p class="section-text">Эта инструкция подходит не только для Вьетнама. Её можно использовать и для других регионов Apple Gift Card, но только при одном условии: регион карты и регион Apple ID должны совпадать.</p>
+      <div class="examples">
+        <div class="example-row featured"><span>Карта Вьетнам</span><span>→ Apple ID Вьетнам</span></div>
+        <div class="example-row"><span>Карта США</span><span>→ Apple ID США</span></div>
+        <div class="example-row"><span>Карта Турция</span><span>→ Apple ID Турция</span></div>
+      </div>
+    </section>
+
+    <section class="card" id="before-buy">
+      <h2 class="section-title">Перед покупкой</h2>
+      <p class="section-text">Перед покупкой убедитесь, что вы готовы использовать регион Vietnam / Вьетнам. Если вы не уверены, напишите нам в Telegram — мы подскажем, подходит ли вам этот регион.</p>
+      <a class="button primary support-link" href="https://t.me/mikkar" target="_blank" rel="noopener">Спросить в Telegram</a>
+    </section>
+
+    <section class="card" id="why-vietnam">
+      <h2 class="section-title">Почему регион Вьетнам?</h2>
+      <div class="mini-grid">
+        <div class="mini-card">💳 Удобно для пополнения Apple ID</div>
+        <div class="mini-card">🛒 Подходит для покупок в App Store</div>
+        <div class="mini-card">🎮 Можно использовать для приложений, игр и внутриигровых покупок</div>
+        <div class="mini-card">✅ Простая активация при правильном регионе</div>
+      </div>
+    </section>
 
     <div class="sticky-progress" aria-label="Прогресс инструкции">
       <div class="progress-top">
@@ -341,13 +436,13 @@
 
     <section class="card" id="before">
       <h2 class="section-title">Перед началом проверьте</h2>
-      <p class="section-text">Отметьте пункты ниже. Это поможет избежать ошибок при смене региона и активации карты.</p>
+      <p class="section-text">Отметьте пункты ниже. Это поможет избежать ошибок при смене региона на Vietnam / Вьетнам и активации карты.</p>
       <div class="checklist" id="checklist">
         <label class="check-item"><span class="checkmark">✓</span><span>У вас нет активного баланса на Apple ID.</span></label>
         <label class="check-item"><span class="checkmark">✓</span><span>Активные подписки отменены или завершены.</span></label>
         <label class="check-item"><span class="checkmark">✓</span><span>Нет активных предзаказов, аренд фильмов или незавершённых покупок.</span></label>
-        <label class="check-item"><span class="checkmark">✓</span><span>Вы знаете регион вашей карты.</span></label>
-        <label class="check-item"><span class="checkmark">✓</span><span>Регион Apple ID должен совпадать с регионом карты.</span></label>
+        <label class="check-item"><span class="checkmark">✓</span><span>Вы знаете, что ваша карта относится к региону Vietnam / Вьетнам.</span></label>
+        <label class="check-item"><span class="checkmark">✓</span><span>Для карты Вьетнам регион Apple ID должен быть Vietnam / Вьетнам.</span></label>
         <label class="check-item"><span class="checkmark">✓</span><span>У вас есть стабильный интернет.</span></label>
       </div>
       <div class="warning">⚠️ <span>Если на Apple ID остался баланс или активная подписка, Apple может не дать сменить регион.</span></div>
@@ -372,7 +467,7 @@
     </section>
 
     <section class="card step" id="step2" data-step="2">
-      <div class="step-head"><div class="icon">⚙️</div><div><h2>Шаг 2 — Как сменить регион App Store на iPhone</h2><p>Выполните пункты по порядку. Названия меню могут немного отличаться в зависимости от версии iOS.</p></div></div>
+      <div class="step-head"><div class="icon">⚙️</div><div><h2>Шаг 2 — Как сменить регион App Store на iPhone</h2><p>Выполните пункты по порядку. Основной сценарий — выбрать Vietnam / Вьетнам. Названия меню могут немного отличаться в зависимости от версии iOS.</p></div></div>
       <div class="num-list">
         <div class="num-card">Откройте “Настройки”.</div>
         <div class="num-card">Нажмите на своё имя Apple ID сверху.</div>
@@ -380,7 +475,7 @@
         <div class="num-card">Нажмите “Просмотреть”.</div>
         <div class="num-card">Выберите “Страна/регион”.</div>
         <div class="num-card">Нажмите “Изменить страну или регион”.</div>
-        <div class="num-card">Выберите регион, который соответствует вашей карте.</div>
+        <div class="num-card">Выберите Vietnam / Вьетнам, если вы активируете карту региона Вьетнам.</div>
         <div class="num-card">Примите условия Apple.</div>
         <div class="num-card">Укажите платёжную информацию и адрес, если Apple попросит.</div>
         <div class="num-card">Нажмите “Далее”.</div>
@@ -401,7 +496,7 @@
         <div class="num-card">Нажмите “Погасить”.</div>
         <div class="num-card">Дождитесь зачисления баланса.</div>
       </div>
-      <div class="warning danger">❗ <span>Карта должна соответствовать региону вашего App Store. Например, карта региона США активируется только на Apple ID с регионом США.</span></div>
+      <div class="warning danger">❗ <span>Для карты Вьетнам регион Apple ID должен быть Vietnam / Вьетнам. Для карт других регионов правило такое же: регион карты и Apple ID должны совпадать.</span></div>
       <button class="primary next-step" data-complete="3">Карта активирована</button>
       <div class="completed-mark">✅ Шаг завершён</div>
     </section>
@@ -423,7 +518,7 @@
       <h2 class="section-title">Частые ошибки</h2>
       <div class="errors">
         <div class="error-card"><div class="error-title">Не получается сменить регион</div><div class="error-solution">Проверьте баланс Apple ID, подписки, семейный доступ, предзаказы и незавершённые покупки.</div></div>
-        <div class="error-card"><div class="error-title">Код не активируется</div><div class="error-solution">Проверьте, совпадает ли регион карты с регионом Apple ID. Также убедитесь, что код введён без пробелов и ошибок.</div></div>
+        <div class="error-card"><div class="error-title">Код не активируется</div><div class="error-solution">Проверьте, выбран ли Vietnam / Вьетнам для карты Вьетнам. Также убедитесь, что код введён без пробелов и ошибок.</div></div>
         <div class="error-card"><div class="error-title">Apple просит адрес</div><div class="error-solution">При смене региона Apple может попросить указать платёжную информацию и адрес для выбранной страны.</div></div>
         <div class="error-card"><div class="error-title">Не вижу кнопку смены региона</div><div class="error-solution">Проверьте, нет ли ограничений на аккаунте, активных подписок или семейного доступа.</div></div>
       </div>
@@ -432,6 +527,9 @@
     <section class="card" id="faq">
       <h2 class="section-title">FAQ</h2>
       <div class="faq">
+        <details><summary>Эта инструкция только для Вьетнама?</summary><p>Основной сценарий инструкции — регион Вьетнам, потому что мы продаём карты этого региона. Но сама логика универсальная: для любой Apple Gift Card регион карты и регион Apple ID должны совпадать.</p></details>
+        <details><summary>Можно ли активировать карту Вьетнам на Apple ID другого региона?</summary><p>Нет. Для карты Вьетнам нужно выбрать регион Vietnam / Вьетнам в Apple ID.</p></details>
+        <details><summary>Что делать, если я не уверен, подходит ли мне Вьетнам?</summary><p>Напишите нам в Telegram перед покупкой. Мы подскажем, какой вариант лучше выбрать.</p></details>
         <details><summary>Можно ли активировать карту одного региона на Apple ID другого региона?</summary><p>Нет. Регион карты и регион Apple ID должны совпадать.</p></details>
         <details><summary>Можно ли потом вернуть старый регион?</summary><p>Да, но сначала лучше потратить баланс и убедиться, что нет активных ограничений.</p></details>
         <details><summary>Что делать, если карта не активируется?</summary><p>Проверьте регион, правильность кода и статус аккаунта. Если проблема остаётся — напишите в поддержку.</p></details>
@@ -442,7 +540,7 @@
 
     <section class="card" id="support">
       <h2 class="section-title">Нужна помощь?</h2>
-      <p class="section-text">Если вы не уверены, какой регион выбрать, или карта не активируется — напишите нам. Мы поможем проверить ситуацию.</p>
+      <p class="section-text">Если вы не уверены, подходит ли вам Vietnam / Вьетнам, или карта не активируется — напишите нам. Мы поможем проверить ситуацию.</p>
       <a class="button primary support-link" href="https://t.me/mikkar" target="_blank" rel="noopener">Написать в Telegram</a>
     </section>
 
@@ -452,9 +550,9 @@
         <div class="trust-item">📋 Пошаговая инструкция</div>
         <div class="trust-item">🎁 Помощь при активации</div>
         <div class="trust-item">💬 Поддержка после покупки</div>
-        <div class="trust-item">🌍 Карты для разных регионов</div>
+        <div class="trust-item">🇻🇳 Карты региона Вьетнам</div>
       </div>
-      <p class="disclaimer">Инструкция носит информационный характер. Apple может изменять интерфейс, требования и правила работы App Store. Если пункты меню отличаются, ориентируйтесь на похожие названия в настройках устройства.</p>
+      <p class="disclaimer">Инструкция носит информационный характер. Apple может изменять интерфейс, требования и правила App Store. Основной сценарий страницы — регион Vietnam / Вьетнам, но общие шаги применимы и к другим регионам при совпадении региона карты и Apple ID.</p>
     </section>
   </main>
 
@@ -542,16 +640,16 @@
 
     document.getElementById('copyBtn').addEventListener('click', async () => {
       const text = [
-        'Инструкция по смене региона App Store и активации Apple Gift Card',
+        'Apple Gift Card Вьетнам: инструкция по смене региона и активации',
         '',
-        'Перед началом: проверьте баланс Apple ID, подписки, предзаказы, семейный доступ и регион карты.',
+        'Перед началом: проверьте баланс Apple ID, подписки, предзаказы, семейный доступ и готовность использовать регион Vietnam / Вьетнам.',
         '',
         'Шаг 1. Подготовьте Apple ID: потратьте баланс, отмените подписки, дождитесь завершения аренд и предзаказов.',
-        'Шаг 2. Настройки → Apple ID → Медиаматериалы и покупки → Просмотреть → Страна/регион → Изменить страну или регион.',
+        'Шаг 2. Настройки → Apple ID → Медиаматериалы и покупки → Просмотреть → Страна/регион → Изменить страну или регион → выберите Vietnam / Вьетнам.',
         'Шаг 3. App Store → профиль → Погасить подарочную карту или код → Ввести код вручную → Погасить.',
         'Шаг 4. Проверьте баланс и не меняйте регион обратно, пока баланс не будет потрачен.',
         '',
-        'Важно: регион карты и регион Apple ID должны совпадать. Apple может менять требования и интерфейс.'
+        'Важно: для карты Вьетнам регион Apple ID должен быть Vietnam / Вьетнам. Для других регионов правило такое же: регион карты и Apple ID должны совпадать. Apple может менять требования и интерфейс.'
       ].join('\n');
 
       try {
