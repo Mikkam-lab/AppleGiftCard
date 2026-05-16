@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f7fbff" />
+  <title>Инструкция Apple Gift Card</title>
+  <style>
+    :root {
+      --bg: #f6f9fd;
+      --card: #ffffff;
+      --text: #142033;
+      --muted: #66758a;
+      --blue: #1677ff;
+      --blue-dark: #0b5ed7;
+      --blue-soft: #eaf3ff;
+      --line: #dce7f5;
+      --green: #20b26b;
+      --orange: #f59f00;
+      --danger: #e5484d;
+      --shadow: 0 14px 35px rgba(22, 119, 255, .10), 0 3px 10px rgba(20, 32, 51, .06);
+      --radius: 22px;
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% -5%, rgba(22,119,255,.18), transparent 32%),
+        linear-gradient(180deg, #f8fbff 0%, var(--bg) 46%, #eef5ff 100%);
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; }
+    button, a.button { -webkit-tap-highlight-color: transparent; }
+    .app {
+      width: min(100%, 560px);
+      margin: 0 auto;
+      padding: 18px 16px calc(92px + var(--safe-bottom));
+    }
+
+    .hero {
+      padding: 28px 20px 22px;
+      border-radius: 30px;
+      background: linear-gradient(145deg, #ffffff 0%, #eef6ff 100%);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -52px;
+      top: -58px;
+      width: 160px;
+      height: 160px;
+      border-radius: 999px;
+      background: rgba(22,119,255,.14);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--blue-dark);
+      font-weight: 700;
+      font-size: 13px;
+      position: relative;
+      z-index: 1;
+    }
+    h1 {
+      margin: 16px 0 10px;
+      font-size: clamp(27px, 7.1vw, 38px);
+      letter-spacing: -.035em;
+      line-height: 1.05;
+      position: relative;
+      z-index: 1;
+    }
+    .subtitle {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .actions { display: grid; gap: 10px; position: relative; z-index: 1; }
+    .button, button {
+      min-height: 52px;
+      border: 0;
+      border-radius: 17px;
+      padding: 14px 16px;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      text-decoration: none;
+      transition: transform .16s ease, background .16s ease, box-shadow .16s ease, opacity .16s ease;
+      user-select: none;
+    }
+    .button.primary, button.primary { background: var(--blue); color: #fff; box-shadow: 0 10px 22px rgba(22,119,255,.28); }
+    .button.secondary, button.secondary { background: #fff; color: var(--blue-dark); border: 1px solid var(--line); }
+    .button.ghost, button.ghost { background: var(--blue-soft); color: var(--blue-dark); }
+    .button:active, button:active { transform: translateY(1px) scale(.985); }
+    @media (hover:hover) {
+      .button.primary:hover, button.primary:hover { background: var(--blue-dark); }
+      .button.secondary:hover, button.secondary:hover { background: #f8fbff; }
+      .button.ghost:hover, button.ghost:hover { background: #ddecff; }
+    }
+
+    .sticky-progress {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      margin: 14px -16px 0;
+      padding: 10px 16px;
+      background: rgba(246,249,253,.86);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(220,231,245,.85);
+    }
+    .progress-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+    .progress-label { font-weight: 800; color: var(--text); }
+    .bar { height: 9px; background: #e5edf8; border-radius: 999px; overflow: hidden; }
+    .bar-fill { width: 0%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--blue), #5aa7ff); transition: width .35s ease; }
+    .steps-dots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; margin-top: 9px; }
+    .dot { height: 34px; border-radius: 13px; background: #fff; border: 1px solid var(--line); color: var(--muted); font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+    .dot.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+    .dot.done { background: #e9fbf3; color: #117848; border-color: #bcebd5; }
+
+    section { margin-top: 18px; scroll-margin-top: 112px; }
+    .card {
+      background: var(--card);
+      border: 1px solid rgba(220,231,245,.9);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+    .section-title { margin: 0 0 8px; font-size: 23px; letter-spacing: -.02em; }
+    .section-text { margin: 0 0 14px; color: var(--muted); }
+    .warning {
+      display: flex;
+      gap: 11px;
+      padding: 13px;
+      border-radius: 17px;
+      background: #fff7e6;
+      border: 1px solid #ffe0a3;
+      color: #6e4a00;
+      font-size: 14px;
+      margin-top: 14px;
+    }
+    .warning.danger { background: #fff1f1; border-color: #ffd1d4; color: #7f1d20; }
+
+    .checklist { display: grid; gap: 10px; margin-top: 14px; }
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 11px;
+      padding: 13px;
+      border: 1px solid var(--line);
+      background: #fbfdff;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: border .16s ease, background .16s ease, transform .16s ease;
+    }
+    .check-item:active { transform: scale(.992); }
+    .checkmark {
+      flex: 0 0 24px;
+      width: 24px;
+      height: 24px;
+      border-radius: 8px;
+      border: 2px solid #b8c9dd;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 900;
+      margin-top: 1px;
+    }
+    .check-item.checked { border-color: #aee8cf; background: #f0fff8; }
+    .check-item.checked .checkmark { background: var(--green); border-color: var(--green); }
+
+    .step { display: none; }
+    .step.unlocked { display: block; animation: rise .26s ease both; }
+    @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+    .step-head { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 12px; }
+    .icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: var(--blue-soft);
+      font-size: 24px;
+      flex: 0 0 auto;
+    }
+    .step h2 { margin: 0 0 4px; font-size: 22px; letter-spacing: -.02em; }
+    .step p { margin: 0; color: var(--muted); }
+
+    .mini-grid { display: grid; grid-template-columns: 1fr; gap: 10px; margin: 14px 0; }
+    .mini-card {
+      display: flex;
+      gap: 11px;
+      align-items: flex-start;
+      padding: 13px;
+      border-radius: 17px;
+      background: #f8fbff;
+      border: 1px solid var(--line);
+      font-weight: 750;
+    }
+    .num-list { counter-reset: item; display: grid; gap: 10px; margin: 14px 0; }
+    .num-card {
+      counter-increment: item;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 13px;
+      border-radius: 17px;
+      background: #fbfdff;
+      border: 1px solid var(--line);
+    }
+    .num-card::before {
+      content: counter(item);
+      width: 28px;
+      height: 28px;
+      flex: 0 0 28px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: var(--blue);
+      color: #fff;
+      font-weight: 900;
+      font-size: 14px;
+    }
+    .note { color: var(--muted); background: #f3f7fc; border-radius: 15px; padding: 12px; font-size: 14px; margin: 12px 0; }
+    .completed-mark { display: none; color: var(--green); font-weight: 900; margin-top: 10px; }
+    .step.completed .completed-mark { display: block; }
+
+    .errors { display: grid; gap: 10px; margin-top: 14px; }
+    .error-card { padding: 14px; border-radius: 17px; border: 1px solid var(--line); background: #fff; }
+    .error-title { font-weight: 900; margin-bottom: 5px; }
+    .error-solution { color: var(--muted); font-size: 14px; }
+
+    .faq { display: grid; gap: 10px; margin-top: 14px; }
+    details {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      padding: 0;
+      overflow: hidden;
+    }
+    summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 15px;
+      font-weight: 900;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; color: var(--blue); font-size: 22px; line-height: 1; }
+    details[open] summary::after { content: "−"; }
+    details p { margin: 0; padding: 0 15px 15px; color: var(--muted); }
+
+    .trust { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .trust-item { background: #f8fbff; border: 1px solid var(--line); border-radius: 17px; padding: 13px; font-weight: 850; }
+    .disclaimer { color: var(--muted); font-size: 12px; margin: 16px 4px 0; text-align: center; }
+
+    .bottom-nav {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 20;
+      padding: 10px 16px calc(10px + var(--safe-bottom));
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(18px);
+      border-top: 1px solid var(--line);
+    }
+    .bottom-inner { width: min(100%, 560px); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: calc(82px + var(--safe-bottom));
+      transform: translateX(-50%) translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      background: #142033;
+      color: #fff;
+      border-radius: 999px;
+      padding: 11px 15px;
+      font-weight: 800;
+      font-size: 14px;
+      z-index: 40;
+      transition: .22s ease;
+      white-space: nowrap;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    @media (min-width: 480px) {
+      .actions { grid-template-columns: 1fr 1fr; }
+      .mini-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header class="hero" id="top">
+      <div class="badge">📱 Подходит для iPhone и iPad</div>
+      <h1>Инструкция по смене региона App Store и активации Apple Gift Card</h1>
+      <p class="subtitle">Следуйте шагам ниже, чтобы подготовить Apple ID, сменить регион и активировать карту пополнения без ошибок.</p>
+      <div class="actions">
+        <button class="primary" data-scroll="#before">Начать инструкцию</button>
+        <a class="button secondary support-link" href="https://t.me/mikkar" target="_blank" rel="noopener">Написать в поддержку</a>
+      </div>
+    </header>
+
+    <div class="sticky-progress" aria-label="Прогресс инструкции">
+      <div class="progress-top">
+        <span class="progress-label">Прогресс</span>
+        <span id="progressText">Шаг 1 из 4</span>
+      </div>
+      <div class="bar"><div class="bar-fill" id="barFill"></div></div>
+      <div class="steps-dots">
+        <div class="dot active" data-dot="1">Шаг 1</div>
+        <div class="dot" data-dot="2">Шаг 2</div>
+        <div class="dot" data-dot="3">Шаг 3</div>
+        <div class="dot" data-dot="4">Шаг 4</div>
+      </div>
+    </div>
+
+    <section class="card" id="before">
+      <h2 class="section-title">Перед началом проверьте</h2>
+      <p class="section-text">Отметьте пункты ниже. Это поможет избежать ошибок при смене региона и активации карты.</p>
+      <div class="checklist" id="checklist">
+        <label class="check-item"><span class="checkmark">✓</span><span>У вас нет активного баланса на Apple ID.</span></label>
+        <label class="check-item"><span class="checkmark">✓</span><span>Активные подписки отменены или завершены.</span></label>
+        <label class="check-item"><span class="checkmark">✓</span><span>Нет активных предзаказов, аренд фильмов или незавершённых покупок.</span></label>
+        <label class="check-item"><span class="checkmark">✓</span><span>Вы знаете регион вашей карты.</span></label>
+        <label class="check-item"><span class="checkmark">✓</span><span>Регион Apple ID должен совпадать с регионом карты.</span></label>
+        <label class="check-item"><span class="checkmark">✓</span><span>У вас есть стабильный интернет.</span></label>
+      </div>
+      <div class="warning">⚠️ <span>Если на Apple ID остался баланс или активная подписка, Apple может не дать сменить регион.</span></div>
+    </section>
+
+    <section class="card step unlocked" id="step1" data-step="1">
+      <div class="step-head">
+        <div class="icon">🛡️</div>
+        <div>
+          <h2>Шаг 1 — Подготовка Apple ID</h2>
+          <p>Перед сменой региона убедитесь, что аккаунт готов. Apple может не разрешить сменить страну, если на аккаунте есть остаток баланса, активные подписки, предзаказы или незавершённые операции.</p>
+        </div>
+      </div>
+      <div class="mini-grid">
+        <div class="mini-card">💳 Потратьте остаток баланса</div>
+        <div class="mini-card">🔕 Отмените активные подписки</div>
+        <div class="mini-card">⏳ Дождитесь завершения аренд и предзаказов</div>
+        <div class="mini-card">👨‍👩‍👧 Выйдите из семейного доступа, если регион не меняется</div>
+      </div>
+      <button class="primary next-step" data-complete="1">Я подготовил аккаунт</button>
+      <div class="completed-mark">✅ Шаг завершён</div>
+    </section>
+
+    <section class="card step" id="step2" data-step="2">
+      <div class="step-head"><div class="icon">⚙️</div><div><h2>Шаг 2 — Как сменить регион App Store на iPhone</h2><p>Выполните пункты по порядку. Названия меню могут немного отличаться в зависимости от версии iOS.</p></div></div>
+      <div class="num-list">
+        <div class="num-card">Откройте “Настройки”.</div>
+        <div class="num-card">Нажмите на своё имя Apple ID сверху.</div>
+        <div class="num-card">Выберите “Медиаматериалы и покупки”.</div>
+        <div class="num-card">Нажмите “Просмотреть”.</div>
+        <div class="num-card">Выберите “Страна/регион”.</div>
+        <div class="num-card">Нажмите “Изменить страну или регион”.</div>
+        <div class="num-card">Выберите регион, который соответствует вашей карте.</div>
+        <div class="num-card">Примите условия Apple.</div>
+        <div class="num-card">Укажите платёжную информацию и адрес, если Apple попросит.</div>
+        <div class="num-card">Нажмите “Далее”.</div>
+      </div>
+      <div class="note">ℹ️ Название пунктов меню может немного отличаться в зависимости от версии iOS.</div>
+      <button class="primary next-step" data-complete="2">Регион изменён</button>
+      <div class="completed-mark">✅ Шаг завершён</div>
+    </section>
+
+    <section class="card step" id="step3" data-step="3">
+      <div class="step-head"><div class="icon">🎁</div><div><h2>Шаг 3 — Как активировать Apple Gift Card</h2><p>После смены региона активируйте код карты в App Store.</p></div></div>
+      <div class="num-list">
+        <div class="num-card">Откройте App Store.</div>
+        <div class="num-card">Нажмите на иконку профиля в правом верхнем углу.</div>
+        <div class="num-card">Выберите “Погасить подарочную карту или код”.</div>
+        <div class="num-card">Нажмите “Ввести код вручную”.</div>
+        <div class="num-card">Введите код карты точно так, как он был выдан.</div>
+        <div class="num-card">Нажмите “Погасить”.</div>
+        <div class="num-card">Дождитесь зачисления баланса.</div>
+      </div>
+      <div class="warning danger">❗ <span>Карта должна соответствовать региону вашего App Store. Например, карта региона США активируется только на Apple ID с регионом США.</span></div>
+      <button class="primary next-step" data-complete="3">Карта активирована</button>
+      <div class="completed-mark">✅ Шаг завершён</div>
+    </section>
+
+    <section class="card step" id="step4" data-step="4">
+      <div class="step-head"><div class="icon">✅</div><div><h2>Шаг 4 — Что делать после активации</h2><p>После успешной активации баланс появится на вашем Apple ID. Его можно использовать для покупок в App Store, оплаты приложений, игр, внутриигровых покупок и некоторых сервисов Apple, если они доступны в выбранном регионе.</p></div></div>
+      <div class="mini-grid">
+        <div class="mini-card">🔎 Проверьте баланс в App Store</div>
+        <div class="mini-card">🕹️ Покупайте приложения и игры</div>
+        <div class="mini-card">💎 Используйте баланс для внутриигровых покупок</div>
+        <div class="mini-card">🌍 Сохраняйте регион, пока баланс не будет потрачен</div>
+      </div>
+      <div class="warning">⚠️ <span>Не меняйте регион обратно, пока на аккаунте остаётся баланс. Это может вызвать ограничения при дальнейшей смене региона.</span></div>
+      <button class="primary next-step" data-complete="4">Завершить инструкцию</button>
+      <div class="completed-mark">✅ Инструкция завершена</div>
+    </section>
+
+    <section class="card" id="errors">
+      <h2 class="section-title">Частые ошибки</h2>
+      <div class="errors">
+        <div class="error-card"><div class="error-title">Не получается сменить регион</div><div class="error-solution">Проверьте баланс Apple ID, подписки, семейный доступ, предзаказы и незавершённые покупки.</div></div>
+        <div class="error-card"><div class="error-title">Код не активируется</div><div class="error-solution">Проверьте, совпадает ли регион карты с регионом Apple ID. Также убедитесь, что код введён без пробелов и ошибок.</div></div>
+        <div class="error-card"><div class="error-title">Apple просит адрес</div><div class="error-solution">При смене региона Apple может попросить указать платёжную информацию и адрес для выбранной страны.</div></div>
+        <div class="error-card"><div class="error-title">Не вижу кнопку смены региона</div><div class="error-solution">Проверьте, нет ли ограничений на аккаунте, активных подписок или семейного доступа.</div></div>
+      </div>
+    </section>
+
+    <section class="card" id="faq">
+      <h2 class="section-title">FAQ</h2>
+      <div class="faq">
+        <details><summary>Можно ли активировать карту одного региона на Apple ID другого региона?</summary><p>Нет. Регион карты и регион Apple ID должны совпадать.</p></details>
+        <details><summary>Можно ли потом вернуть старый регион?</summary><p>Да, но сначала лучше потратить баланс и убедиться, что нет активных ограничений.</p></details>
+        <details><summary>Что делать, если карта не активируется?</summary><p>Проверьте регион, правильность кода и статус аккаунта. Если проблема остаётся — напишите в поддержку.</p></details>
+        <details><summary>Нужно ли создавать новый Apple ID?</summary><p>Обычно можно сменить регион текущего Apple ID, но иногда удобнее использовать отдельный Apple ID под нужный регион.</p></details>
+        <details><summary>Можно ли использовать VPN?</summary><p>Для активации карты главное — регион Apple ID. VPN не заменяет смену региона аккаунта.</p></details>
+      </div>
+    </section>
+
+    <section class="card" id="support">
+      <h2 class="section-title">Нужна помощь?</h2>
+      <p class="section-text">Если вы не уверены, какой регион выбрать, или карта не активируется — напишите нам. Мы поможем проверить ситуацию.</p>
+      <a class="button primary support-link" href="https://t.me/mikkar" target="_blank" rel="noopener">Написать в Telegram</a>
+    </section>
+
+    <section class="card" id="trust">
+      <h2 class="section-title">Почему удобно</h2>
+      <div class="trust">
+        <div class="trust-item">📋 Пошаговая инструкция</div>
+        <div class="trust-item">🎁 Помощь при активации</div>
+        <div class="trust-item">💬 Поддержка после покупки</div>
+        <div class="trust-item">🌍 Карты для разных регионов</div>
+      </div>
+      <p class="disclaimer">Инструкция носит информационный характер. Apple может изменять интерфейс, требования и правила работы App Store. Если пункты меню отличаются, ориентируйтесь на похожие названия в настройках устройства.</p>
+    </section>
+  </main>
+
+  <nav class="bottom-nav" aria-label="Быстрые действия">
+    <div class="bottom-inner">
+      <button class="ghost" id="copyBtn">📋 Скопировать</button>
+      <a class="button primary support-link" href="https://t.me/mikkar" target="_blank" rel="noopener">💬 Поддержка</a>
+    </div>
+  </nav>
+
+  <div class="toast" id="toast">Готово</div>
+
+  <script>
+    // Укажите username поддержки без @, например: my_shop_support
+    const TELEGRAM_USERNAME = 'mikkar';
+
+    const tg = window.Telegram && window.Telegram.WebApp;
+    if (tg) {
+      tg.ready();
+      tg.expand();
+      tg.setHeaderColor('#f7fbff');
+      tg.setBackgroundColor('#f6f9fd');
+    }
+
+    const supportUrl = `https://t.me/${TELEGRAM_USERNAME}`;
+    document.querySelectorAll('.support-link').forEach(link => link.href = supportUrl);
+
+    const totalSteps = 4;
+    let currentStep = 1;
+    const completed = new Set();
+    const barFill = document.getElementById('barFill');
+    const progressText = document.getElementById('progressText');
+    const toast = document.getElementById('toast');
+
+    function showToast(text) {
+      toast.textContent = text;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 1800);
+    }
+
+    function updateProgress() {
+      const doneCount = completed.size;
+      const percent = Math.max((doneCount / totalSteps) * 100, ((currentStep - 1) / totalSteps) * 100);
+      barFill.style.width = `${percent}%`;
+      progressText.textContent = doneCount === totalSteps ? 'Готово' : `Шаг ${currentStep} из ${totalSteps}`;
+      document.querySelectorAll('.dot').forEach(dot => {
+        const n = Number(dot.dataset.dot);
+        dot.classList.toggle('done', completed.has(n));
+        dot.classList.toggle('active', n === currentStep && !completed.has(n));
+      });
+    }
+
+    function unlockStep(step) {
+      const el = document.getElementById(`step${step}`);
+      if (!el) return;
+      el.classList.add('unlocked');
+      currentStep = step;
+      updateProgress();
+      setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+    }
+
+    document.querySelectorAll('[data-scroll]').forEach(btn => {
+      btn.addEventListener('click', () => document.querySelector(btn.dataset.scroll).scrollIntoView({ behavior: 'smooth', block: 'start' }));
+    });
+
+    document.querySelectorAll('.check-item').forEach(item => {
+      item.addEventListener('click', () => item.classList.toggle('checked'));
+    });
+
+    document.querySelectorAll('.next-step').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const step = Number(btn.dataset.complete);
+        completed.add(step);
+        document.getElementById(`step${step}`).classList.add('completed');
+        if (step < totalSteps) {
+          unlockStep(step + 1);
+        } else {
+          currentStep = totalSteps;
+          updateProgress();
+          showToast('Инструкция завершена');
+          document.getElementById('errors').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    document.getElementById('copyBtn').addEventListener('click', async () => {
+      const text = [
+        'Инструкция по смене региона App Store и активации Apple Gift Card',
+        '',
+        'Перед началом: проверьте баланс Apple ID, подписки, предзаказы, семейный доступ и регион карты.',
+        '',
+        'Шаг 1. Подготовьте Apple ID: потратьте баланс, отмените подписки, дождитесь завершения аренд и предзаказов.',
+        'Шаг 2. Настройки → Apple ID → Медиаматериалы и покупки → Просмотреть → Страна/регион → Изменить страну или регион.',
+        'Шаг 3. App Store → профиль → Погасить подарочную карту или код → Ввести код вручную → Погасить.',
+        'Шаг 4. Проверьте баланс и не меняйте регион обратно, пока баланс не будет потрачен.',
+        '',
+        'Важно: регион карты и регион Apple ID должны совпадать. Apple может менять требования и интерфейс.'
+      ].join('\n');
+
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast('Инструкция скопирована');
+        if (tg) tg.HapticFeedback.notificationOccurred('success');
+      } catch (e) {
+        showToast('Не удалось скопировать');
+      }
+    });
+
+    updateProgress();
+  </script>
+</body>
+</html>
